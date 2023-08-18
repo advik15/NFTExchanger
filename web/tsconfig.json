@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es5",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "sourceMap": true,
+  },
+  "files": [
+    "src/index.ts",
+    "src/typings.d.ts"
+  ]
+}

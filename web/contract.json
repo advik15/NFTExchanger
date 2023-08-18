@@ -1,0 +1,54 @@
+{
+    "name": "CopyrightAgree",
+    "methods": [
+        {
+            "name": "claim_license",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "payment"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "claim_shirts",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "payment"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "claim_shorts",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "payment"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        },
+        {
+            "name": "claim_sweatshirts",
+            "args": [
+                {
+                    "type": "pay",
+                    "name": "payment"
+                }
+            ],
+            "returns": {
+                "type": "void"
+            }
+        }
+    ],
+    "networks": {}
+}

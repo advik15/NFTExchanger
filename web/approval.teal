@@ -1,0 +1,230 @@
+#pragma version 8
+intcblock 0 1
+txn NumAppArgs
+intc_0 // 0
+==
+bnz main_l10
+txna ApplicationArgs 0
+pushbytes 0xa39298ea // "claim_license(pay)void"
+==
+bnz main_l9
+txna ApplicationArgs 0
+pushbytes 0xf8b2855b // "claim_shirts(pay)void"
+==
+bnz main_l8
+txna ApplicationArgs 0
+pushbytes 0xd62ee318 // "claim_shorts(pay)void"
+==
+bnz main_l7
+txna ApplicationArgs 0
+pushbytes 0x76d2a1c6 // "claim_sweatshirts(pay)void"
+==
+bnz main_l6
+err
+main_l6:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub claimsweatshirtscaster_8
+intc_1 // 1
+return
+main_l7:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub claimshortscaster_7
+intc_1 // 1
+return
+main_l8:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub claimshirtscaster_6
+intc_1 // 1
+return
+main_l9:
+txn OnCompletion
+intc_0 // NoOp
+==
+txn ApplicationID
+intc_0 // 0
+!=
+&&
+assert
+callsub claimlicensecaster_5
+intc_1 // 1
+return
+main_l10:
+txn OnCompletion
+intc_0 // NoOp
+==
+bnz main_l12
+err
+main_l12:
+txn ApplicationID
+intc_0 // 0
+==
+assert
+callsub create_0
+intc_1 // 1
+return
+
+// create
+create_0:
+proto 0 0
+pushbytes 0x617361 // "asa"
+intc_0 // 0
+app_global_put
+pushbytes 0x636f707972696768745f686f6c646572 // "copyright_holder"
+pushbytes 0x52504e584e59354259433637544937415a4755554b4153373754464f5035574d4c485033475a4b4c44533251534b495656505a474f3752524259 // "RPNXNY5BYC67TI7AZGUUKAS77TFOP5WMLHP3GZKLDS2QSKIVVPZGO7RRBY"
+app_global_put
+pushbytes 0x63705f666565 // "cp_fee"
+pushint 10000 // 10000
+app_global_put
+pushbytes 0x6e616e7a6f6f // "nanzoo"
+pushbytes 0x3655443344464b554e41423443513435443436494d4b464a4d334b5a4f4e4e434336484148433653455549424847364e424e35554b5a51503649 // "6UD3DFKUNAB4CQ45D46IMKFJM3KZONNCC6HAHC6SEUIBHG6NBN5UKZQP6I"
+app_global_put
+pushbytes 0x6e616e7a6f6f5f666565 // "nanzoo_fee"
+pushint 1000 // 1000
+app_global_put
+pushbytes 0x6e756d5f736869727473 // "num_shirts"
+intc_0 // 0
+app_global_put
+pushbytes 0x6e756d5f73686f727473 // "num_shorts"
+intc_0 // 0
+app_global_put
+pushbytes 0x6e756d5f7377656174736869727473 // "num_sweatshirts"
+intc_0 // 0
+app_global_put
+pushbytes 0x757365725f636c69656e74 // "user_client"
+pushbytes 0x // ""
+app_global_put
+retsub
+
+// claim_license
+claimlicense_1:
+proto 1 0
+txn Sender
+global CreatorAddress
+==
+// unauthorized
+assert
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+retsub
+
+// claim_shirts
+claimshirts_2:
+proto 1 0
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+retsub
+
+// claim_shorts
+claimshorts_3:
+proto 1 0
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+retsub
+
+// claim_sweatshirts
+claimsweatshirts_4:
+proto 1 0
+frame_dig -1
+gtxns Sender
+txn Sender
+==
+assert
+retsub
+
+// claim_license_caster
+claimlicensecaster_5:
+proto 0 0
+intc_0 // 0
+txn GroupIndex
+intc_1 // 1
+-
+frame_bury 0
+frame_dig 0
+gtxns TypeEnum
+intc_1 // pay
+==
+assert
+frame_dig 0
+callsub claimlicense_1
+retsub
+
+// claim_shirts_caster
+claimshirtscaster_6:
+proto 0 0
+intc_0 // 0
+txn GroupIndex
+intc_1 // 1
+-
+frame_bury 0
+frame_dig 0
+gtxns TypeEnum
+intc_1 // pay
+==
+assert
+frame_dig 0
+callsub claimshirts_2
+retsub
+
+// claim_shorts_caster
+claimshortscaster_7:
+proto 0 0
+intc_0 // 0
+txn GroupIndex
+intc_1 // 1
+-
+frame_bury 0
+frame_dig 0
+gtxns TypeEnum
+intc_1 // pay
+==
+assert
+frame_dig 0
+callsub claimshorts_3
+retsub
+
+// claim_sweatshirts_caster
+claimsweatshirtscaster_8:
+proto 0 0
+intc_0 // 0
+txn GroupIndex
+intc_1 // 1
+-
+frame_bury 0
+frame_dig 0
+gtxns TypeEnum
+intc_1 // pay
+==
+assert
+frame_dig 0
+callsub claimsweatshirts_4
+retsub

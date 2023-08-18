@@ -1,0 +1,151 @@
+{
+    "hints": {
+        "claim_license(pay)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "claim_shirts(pay)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "claim_shorts(pay)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        },
+        "claim_sweatshirts(pay)void": {
+            "call_config": {
+                "no_op": "CALL"
+            }
+        }
+    },
+    "source": {
+        "approval": "I3ByYWdtYSB2ZXJzaW9uIDgKaW50Y2Jsb2NrIDAgMQp0eG4gTnVtQXBwQXJncwppbnRjXzAgLy8gMAo9PQpibnogbWFpbl9sMTAKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMApwdXNoYnl0ZXMgMHhhMzkyOThlYSAvLyAiY2xhaW1fbGljZW5zZShwYXkpdm9pZCIKPT0KYm56IG1haW5fbDkKdHhuYSBBcHBsaWNhdGlvbkFyZ3MgMApwdXNoYnl0ZXMgMHhmOGIyODU1YiAvLyAiY2xhaW1fc2hpcnRzKHBheSl2b2lkIgo9PQpibnogbWFpbl9sOAp0eG5hIEFwcGxpY2F0aW9uQXJncyAwCnB1c2hieXRlcyAweGQ2MmVlMzE4IC8vICJjbGFpbV9zaG9ydHMocGF5KXZvaWQiCj09CmJueiBtYWluX2w3CnR4bmEgQXBwbGljYXRpb25BcmdzIDAKcHVzaGJ5dGVzIDB4NzZkMmExYzYgLy8gImNsYWltX3N3ZWF0c2hpcnRzKHBheSl2b2lkIgo9PQpibnogbWFpbl9sNgplcnIKbWFpbl9sNjoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBjbGFpbXN3ZWF0c2hpcnRzY2FzdGVyXzgKaW50Y18xIC8vIDEKcmV0dXJuCm1haW5fbDc6CnR4biBPbkNvbXBsZXRpb24KaW50Y18wIC8vIE5vT3AKPT0KdHhuIEFwcGxpY2F0aW9uSUQKaW50Y18wIC8vIDAKIT0KJiYKYXNzZXJ0CmNhbGxzdWIgY2xhaW1zaG9ydHNjYXN0ZXJfNwppbnRjXzEgLy8gMQpyZXR1cm4KbWFpbl9sODoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAohPQomJgphc3NlcnQKY2FsbHN1YiBjbGFpbXNoaXJ0c2Nhc3Rlcl82CmludGNfMSAvLyAxCnJldHVybgptYWluX2w5Ogp0eG4gT25Db21wbGV0aW9uCmludGNfMCAvLyBOb09wCj09CnR4biBBcHBsaWNhdGlvbklECmludGNfMCAvLyAwCiE9CiYmCmFzc2VydApjYWxsc3ViIGNsYWltbGljZW5zZWNhc3Rlcl81CmludGNfMSAvLyAxCnJldHVybgptYWluX2wxMDoKdHhuIE9uQ29tcGxldGlvbgppbnRjXzAgLy8gTm9PcAo9PQpibnogbWFpbl9sMTIKZXJyCm1haW5fbDEyOgp0eG4gQXBwbGljYXRpb25JRAppbnRjXzAgLy8gMAo9PQphc3NlcnQKY2FsbHN1YiBjcmVhdGVfMAppbnRjXzEgLy8gMQpyZXR1cm4KCi8vIGNyZWF0ZQpjcmVhdGVfMDoKcHJvdG8gMCAwCnB1c2hieXRlcyAweDYxNzM2MSAvLyAiYXNhIgppbnRjXzAgLy8gMAphcHBfZ2xvYmFsX3B1dApwdXNoYnl0ZXMgMHg2MzZmNzA3OTcyNjk2NzY4NzQ1ZjY4NmY2YzY0NjU3MiAvLyAiY29weXJpZ2h0X2hvbGRlciIKcHVzaGJ5dGVzIDB4NTI1MDRlNTg0ZTU5MzU0MjU5NDMzNjM3NTQ0OTM3NDE1YTQ3NTU1NTRiNDE1MzM3Mzc1NDQ2NGY1MDM1NTc0ZDRjNDg1MDMzNDc1YTRiNGM0NDUzMzI1MTUzNGI0OTU2NTY1MDVhNDc0ZjM3NTI1MjQyNTkgLy8gIlJQTlhOWTVCWUM2N1RJN0FaR1VVS0FTNzdURk9QNVdNTEhQM0daS0xEUzJRU0tJVlZQWkdPN1JSQlkiCmFwcF9nbG9iYWxfcHV0CnB1c2hieXRlcyAweDYzNzA1ZjY2NjU2NSAvLyAiY3BfZmVlIgpwdXNoaW50IDEwMDAwIC8vIDEwMDAwCmFwcF9nbG9iYWxfcHV0CnB1c2hieXRlcyAweDZlNjE2ZTdhNmY2ZiAvLyAibmFuem9vIgpwdXNoYnl0ZXMgMHgzNjU1NDQzMzQ0NDY0YjU1NGU0MTQyMzQ0MzUxMzQzNTQ0MzQzNjQ5NGQ0YjQ2NGE0ZDMzNGI1YTRmNGU0ZTQzNDMzNjQ4NDE0ODQzMzY1MzQ1NTU0OTQyNDg0NzM2NGU0MjRlMzU1NTRiNWE1MTUwMzY0OSAvLyAiNlVEM0RGS1VOQUI0Q1E0NUQ0NklNS0ZKTTNLWk9OTkNDNkhBSEM2U0VVSUJIRzZOQk41VUtaUVA2SSIKYXBwX2dsb2JhbF9wdXQKcHVzaGJ5dGVzIDB4NmU2MTZlN2E2ZjZmNWY2NjY1NjUgLy8gIm5hbnpvb19mZWUiCnB1c2hpbnQgMTAwMCAvLyAxMDAwCmFwcF9nbG9iYWxfcHV0CnB1c2hieXRlcyAweDZlNzU2ZDVmNzM2ODY5NzI3NDczIC8vICJudW1fc2hpcnRzIgppbnRjXzAgLy8gMAphcHBfZ2xvYmFsX3B1dApwdXNoYnl0ZXMgMHg2ZTc1NmQ1ZjczNjg2ZjcyNzQ3MyAvLyAibnVtX3Nob3J0cyIKaW50Y18wIC8vIDAKYXBwX2dsb2JhbF9wdXQKcHVzaGJ5dGVzIDB4NmU3NTZkNWY3Mzc3NjU2MTc0NzM2ODY5NzI3NDczIC8vICJudW1fc3dlYXRzaGlydHMiCmludGNfMCAvLyAwCmFwcF9nbG9iYWxfcHV0CnB1c2hieXRlcyAweDc1NzM2NTcyNWY2MzZjNjk2NTZlNzQgLy8gInVzZXJfY2xpZW50IgpwdXNoYnl0ZXMgMHggLy8gIiIKYXBwX2dsb2JhbF9wdXQKcmV0c3ViCgovLyBjbGFpbV9saWNlbnNlCmNsYWltbGljZW5zZV8xOgpwcm90byAxIDAKdHhuIFNlbmRlcgpnbG9iYWwgQ3JlYXRvckFkZHJlc3MKPT0KLy8gdW5hdXRob3JpemVkCmFzc2VydApmcmFtZV9kaWcgLTEKZ3R4bnMgU2VuZGVyCnR4biBTZW5kZXIKPT0KYXNzZXJ0CnJldHN1YgoKLy8gY2xhaW1fc2hpcnRzCmNsYWltc2hpcnRzXzI6CnByb3RvIDEgMApmcmFtZV9kaWcgLTEKZ3R4bnMgU2VuZGVyCnR4biBTZW5kZXIKPT0KYXNzZXJ0CnJldHN1YgoKLy8gY2xhaW1fc2hvcnRzCmNsYWltc2hvcnRzXzM6CnByb3RvIDEgMApmcmFtZV9kaWcgLTEKZ3R4bnMgU2VuZGVyCnR4biBTZW5kZXIKPT0KYXNzZXJ0CnJldHN1YgoKLy8gY2xhaW1fc3dlYXRzaGlydHMKY2xhaW1zd2VhdHNoaXJ0c180Ogpwcm90byAxIDAKZnJhbWVfZGlnIC0xCmd0eG5zIFNlbmRlcgp0eG4gU2VuZGVyCj09CmFzc2VydApyZXRzdWIKCi8vIGNsYWltX2xpY2Vuc2VfY2FzdGVyCmNsYWltbGljZW5zZWNhc3Rlcl81Ogpwcm90byAwIDAKaW50Y18wIC8vIDAKdHhuIEdyb3VwSW5kZXgKaW50Y18xIC8vIDEKLQpmcmFtZV9idXJ5IDAKZnJhbWVfZGlnIDAKZ3R4bnMgVHlwZUVudW0KaW50Y18xIC8vIHBheQo9PQphc3NlcnQKZnJhbWVfZGlnIDAKY2FsbHN1YiBjbGFpbWxpY2Vuc2VfMQpyZXRzdWIKCi8vIGNsYWltX3NoaXJ0c19jYXN0ZXIKY2xhaW1zaGlydHNjYXN0ZXJfNjoKcHJvdG8gMCAwCmludGNfMCAvLyAwCnR4biBHcm91cEluZGV4CmludGNfMSAvLyAxCi0KZnJhbWVfYnVyeSAwCmZyYW1lX2RpZyAwCmd0eG5zIFR5cGVFbnVtCmludGNfMSAvLyBwYXkKPT0KYXNzZXJ0CmZyYW1lX2RpZyAwCmNhbGxzdWIgY2xhaW1zaGlydHNfMgpyZXRzdWIKCi8vIGNsYWltX3Nob3J0c19jYXN0ZXIKY2xhaW1zaG9ydHNjYXN0ZXJfNzoKcHJvdG8gMCAwCmludGNfMCAvLyAwCnR4biBHcm91cEluZGV4CmludGNfMSAvLyAxCi0KZnJhbWVfYnVyeSAwCmZyYW1lX2RpZyAwCmd0eG5zIFR5cGVFbnVtCmludGNfMSAvLyBwYXkKPT0KYXNzZXJ0CmZyYW1lX2RpZyAwCmNhbGxzdWIgY2xhaW1zaG9ydHNfMwpyZXRzdWIKCi8vIGNsYWltX3N3ZWF0c2hpcnRzX2Nhc3RlcgpjbGFpbXN3ZWF0c2hpcnRzY2FzdGVyXzg6CnByb3RvIDAgMAppbnRjXzAgLy8gMAp0eG4gR3JvdXBJbmRleAppbnRjXzEgLy8gMQotCmZyYW1lX2J1cnkgMApmcmFtZV9kaWcgMApndHhucyBUeXBlRW51bQppbnRjXzEgLy8gcGF5Cj09CmFzc2VydApmcmFtZV9kaWcgMApjYWxsc3ViIGNsYWltc3dlYXRzaGlydHNfNApyZXRzdWI=",
+        "clear": "I3ByYWdtYSB2ZXJzaW9uIDgKcHVzaGludCAwIC8vIDAKcmV0dXJu"
+    },
+    "state": {
+        "global": {
+            "num_byte_slices": 3,
+            "num_uints": 6
+        },
+        "local": {
+            "num_byte_slices": 0,
+            "num_uints": 0
+        }
+    },
+    "schema": {
+        "global": {
+            "declared": {
+                "asa": {
+                    "type": "uint64",
+                    "key": "asa",
+                    "descr": "ID of the asset being minted for authorization"
+                },
+                "copyright_holder": {
+                    "type": "bytes",
+                    "key": "copyright_holder",
+                    "descr": "Address of the organization whose copyright material is being used"
+                },
+                "cp_fee": {
+                    "type": "uint64",
+                    "key": "cp_fee",
+                    "descr": "Initial License fee"
+                },
+                "nanzoo": {
+                    "type": "bytes",
+                    "key": "nanzoo",
+                    "descr": "Creator fee"
+                },
+                "nanzoo_fee": {
+                    "type": "uint64",
+                    "key": "nanzoo_fee",
+                    "descr": "creator fee"
+                },
+                "num_shirts": {
+                    "type": "uint64",
+                    "key": "num_shirts",
+                    "descr": "Number of shirts client wishes to use copright material on"
+                },
+                "num_shorts": {
+                    "type": "uint64",
+                    "key": "num_shorts",
+                    "descr": "Number of shorts client wishes to use copright material on"
+                },
+                "num_sweatshirts": {
+                    "type": "uint64",
+                    "key": "num_sweatshirts",
+                    "descr": "Number of sweatshirts client wishes to use copright material on"
+                },
+                "user_client": {
+                    "type": "bytes",
+                    "key": "user_client",
+                    "descr": "Address of the client receiving"
+                }
+            },
+            "reserved": {}
+        },
+        "local": {
+            "declared": {},
+            "reserved": {}
+        }
+    },
+    "contract": {
+        "name": "CopyrightAgree",
+        "methods": [
+            {
+                "name": "claim_license",
+                "args": [
+                    {
+                        "type": "pay",
+                        "name": "payment"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            },
+            {
+                "name": "claim_shirts",
+                "args": [
+                    {
+                        "type": "pay",
+                        "name": "payment"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            },
+            {
+                "name": "claim_shorts",
+                "args": [
+                    {
+                        "type": "pay",
+                        "name": "payment"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            },
+            {
+                "name": "claim_sweatshirts",
+                "args": [
+                    {
+                        "type": "pay",
+                        "name": "payment"
+                    }
+                ],
+                "returns": {
+                    "type": "void"
+                }
+            }
+        ],
+        "networks": {}
+    },
+    "bare_call_config": {
+        "no_op": "CREATE"
+    }
+}
