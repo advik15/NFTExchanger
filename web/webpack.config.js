@@ -28,6 +28,11 @@ const config = {
       chunks: ['main'], // Optional: No chunks needed for this page
       filename: 'connect.html',
     }),
+    new HtmlWebpackPlugin({
+      template: 'order.html', // Your connect.html template
+      chunks: ['main'], // Optional: No chunks needed for this page
+      filename: 'order.html',
+    }),
     new webpack.ProvidePlugin({
       Buffer: ['buffer', 'Buffer']
     })
