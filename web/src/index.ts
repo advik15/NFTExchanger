@@ -8,6 +8,7 @@ import { getDatabase, ref as dbRef, set } from 'firebase/database';
 import { get } from 'firebase/database';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { getStorage, ref as storageRef, uploadBytes } from "firebase/storage";
+import { sign } from 'crypto'
 
 
 //connect our wallet and populate wallet array
@@ -157,12 +158,38 @@ buttons['connect'].onclick = async () => {
   pera.accounts.forEach(account => {
     accountsMenu.add(new Option(account, account))
   })
-  buttons.enter.disabled = false
+  var accountCheck = document.getElementById('accountCheck');
+  accountCheck.classList.remove("hidden");
+  accountsMenu.classList.remove("hidden");
+
+
+  var form = document.getElementById('contractForm');
+  form.classList.remove("hidden");
+  var enterButton = document.getElementById('enter') as HTMLInputElement
+  enterButton.classList.remove("hidden");
+  var party = document.getElementById('party1') as HTMLInputElement;
+  var date = document.getElementById('date') as HTMLInputElement;
+  var number = document.getElementById('length') as HTMLInputElement;
+  party.addEventListener("input",checkForm);
+  date.addEventListener("input",checkForm);
+  number.addEventListener("input",checkForm);
+  var enterinfo = document.getElementById('enterinfo') as HTMLInputElement;
+  function checkForm(){
+    if(party.value && date.value && number.value){
+      enterButton.disabled = false;
+      enterinfo.classList.remove('hidden');
+    }
+  }
+ 
   document.getElementById('status').innerHTML = 'Connected! Not the right account? Feel free to connect again'
 }
-
+var signature = document.getElementById('signature') as HTMLInputElement;
+var add_signature = document.getElementById('add-signature') as HTMLInputElement;
+var preview_button = document.getElementById('preview-button') as HTMLInputElement;
+var download_button = document.getElementById('download-button') as HTMLInputElement;
+var agreeinfo = document.getElementById('agreeinfo') as HTMLInputElement;
+var agreeButton = document.getElementById('agree') as HTMLInputElement;
 buttons['enter'].onclick = async () => {
-  buttons.enter.disabled = true
   const sender = {
     addr: accountsMenu.selectedOptions[0].value,
     signer
@@ -261,12 +288,34 @@ buttons['enter'].onclick = async () => {
     font,
   });
 
-
+  console.log("do i get to this point");
   cpID = appIndex
   buttons.agree.disabled = false
+ 
+  signature.classList.remove("hidden");
+  add_signature.classList.remove("hidden");
+
+
 }
 
+signature.addEventListener("input",checkSignature);
+
+function checkSignature()
+{
+  if(signature.value)
+  {
+    console.log('hellloooooo');
+    add_signature.disabled = false;
+  }
+}
+
+    
 buttons['add-signature'].onclick = async () => {
+  console.log('helooooo')
+    preview_button.classList.remove("hidden");
+    download_button.classList.remove("hidden");
+    agreeButton.classList.remove("hidden");
+    agreeinfo.classList.remove("hidden");
   if (pdfDoc) {
     const page = pdfDoc.getPages()[0];
     page.drawText(signatureInput.value, {
@@ -341,7 +390,7 @@ buttons['agree'].onclick = async () => {
   const assetIndex = assetCreateInfo['asset-index'];
 
   console.log('Asset ${assetIndex} created!');
-
+  console.log(assetIndex);
   const atcOpt = new algosdk.AtomicTransactionComposer()
 
   const optInTxn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
@@ -383,8 +432,9 @@ buttons['agree'].onclick = async () => {
   const signedXferTxn = xferTxn.signTxn(assetAccount.sk);
   await algodClient.sendRawTransaction(signedXferTxn).do();
   await algosdk.waitForConfirmation(algodClient, xferTxn.txID().toString(), 3);
+  console.log(assetIndex);
 
-  document.getElementById('t&c').innerHTML = 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise.'
+  document.getElementById('assetinfo').innerHTML = 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise.'
 
   const storage = getStorage();
   const pdfRef = storageRef(storage, 'accounts/${sender.addr}/${assetIndex}/generated.pdf');
