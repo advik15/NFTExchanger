@@ -157,12 +157,12 @@ buttons['connect'].onclick = async () => {
   pera.accounts.forEach(account => {
     accountsMenu.add(new Option(account, account))
   })
-  var accountCheck = document.getElementById('accountCheck');
+  var accountCheck = document.getElementById('accountCheck') as HTMLInputElement;
   accountCheck.classList.remove("hidden");
   accountsMenu.classList.remove("hidden");
 
 
-  var form = document.getElementById('contractForm');
+  var form = document.getElementById('contractForm') as HTMLInputElement;
   form.classList.remove("hidden");
   var enterButton = document.getElementById('enter') as HTMLInputElement
   enterButton.classList.remove("hidden");
@@ -180,7 +180,6 @@ buttons['connect'].onclick = async () => {
     }
   }
  
-  document.getElementById('status').innerHTML = 'Connected! Not the right account? Feel free to connect again'
 }
 var signature = document.getElementById('signature') as HTMLInputElement;
 var add_signature = document.getElementById('add-signature') as HTMLInputElement;
@@ -433,8 +432,9 @@ buttons['agree'].onclick = async () => {
   await algosdk.waitForConfirmation(algodClient, xferTxn.txID().toString(), 3);
   console.log(assetIndex);
 
-  document.getElementById('assetinfo').innerHTML = 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise.'
-
+  var assetinfo = document.getElementById('assetinfo') as HTMLInputElement;
+  assetinfo.classList.remove('hidden');
+   assetinfo.innerHTML= 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise.'
   const storage = getStorage();
   const pdfRef = storageRef(storage, 'accounts/${sender.addr}/${assetIndex}/generated.pdf');
 

@@ -9,7 +9,11 @@ const isProduction = process.env.NODE_ENV == 'production'
 
 const config = {
   devtool: 'eval-source-map',
-  entry: './src/index.ts',
+  entry: {
+    index: './src/index.ts',
+    connect:'./src/connect.ts',
+    order:'./src/orderform.ts'
+  },
   output: {
     path: path.resolve(__dirname, 'dist')
   },
@@ -20,17 +24,17 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html', // Your existing template
-      chunks: ['main'], // Optional: Specify which chunk to include
+      chunks: ['index'], // Optional: Specify which chunk to include
       filename: 'index.html', // Output file name (if using a different name)
     }),
     new HtmlWebpackPlugin({
       template: 'connect.html', // Your connect.html template
-      chunks: ['main'], // Optional: No chunks needed for this page
+      chunks: ['connect'], // Optional: No chunks needed for this page
       filename: 'connect.html',
     }),
     new HtmlWebpackPlugin({
       template: 'order.html', // Your connect.html template
-      chunks: ['main'], // Optional: No chunks needed for this page
+      chunks: ['order'], // Optional: No chunks needed for this page
       filename: 'order.html',
     }),
     new webpack.ProvidePlugin({
