@@ -10,7 +10,6 @@ var submit = document.getElementById('submit') as HTMLInputElement;
 var connect = document.getElementById('connect') as HTMLInputElement;
 var assetid = document.getElementById('assetId') as HTMLInputElement;
 var checkasset = document.getElementById('checkAsset') as HTMLInputElement;
-var assetinput = document.getElementById('assetinput') as HTMLInputElement;
 const shirtsInput = document.getElementById('shirts') as HTMLInputElement
 const shortsInput = document.getElementById('shorts') as HTMLInputElement
 const sweatshirtsInput = document.getElementById('sweatshirts') as HTMLInputElement
@@ -21,6 +20,8 @@ async function signer(txns: algosdk.Transaction[]) {
 }
 function checkAccount(inputAccount: string, inputAssetIndex: number) {
   const db = getDatabase();
+  console.log(`${db}`)
+
   const accountRef = dbRef(db, 'accounts/' + inputAccount);
   console.log("test")
   // Get the account data from the database
@@ -51,7 +52,6 @@ connect.onclick = async () => {
   accountsMenu.classList.remove("hidden");
   assetid.classList.remove("hidden");
   checkasset.classList.remove("hidden");
-  assetinput.classList.remove("hidden");
 }
 checkasset.onclick = async () => {
 
@@ -60,8 +60,10 @@ checkasset.onclick = async () => {
     addr: accountsMenu.selectedOptions[0].value,
     signer
   }
-  const assetID = assetinput.valueAsNumber
-  console.log(`${sender.addr}` )
+  console.log("hi" )
+
+  const assetID = assetid.valueAsNumber
+  console.log("hiffff" )
 
   checkAccount(sender.addr, assetID);
 

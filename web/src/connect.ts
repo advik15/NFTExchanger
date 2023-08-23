@@ -105,6 +105,7 @@ function hashPdf(file: Blob): Promise<Uint8Array> {
 
 function storeAccount(account: string, assetIndex: number) {
   const db = getDatabase();
+  console.log(`${db}`)
   const accountRef = dbRef(db, 'accounts/' + account);
 
   // Retrieve existing asset indexes
@@ -390,7 +391,7 @@ buttons['agree'].onclick = async () => {
   console.log('Asset ${assetIndex} created!');
   console.log(assetIndex);
   const atcOpt = new algosdk.AtomicTransactionComposer()
-
+  console.log("line394")
   const optInTxn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
     from: sender.addr,
     to: sender.addr,
@@ -398,7 +399,10 @@ buttons['agree'].onclick = async () => {
     assetIndex,
     amount: 0,
   });
+  console.log("line402")
+
   atcOpt.addTransaction({ txn: optInTxn, signer })
+  console.log("line405")
 
   const claimLicenseMe = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     suggestedParams,
@@ -406,7 +410,10 @@ buttons['agree'].onclick = async () => {
     from: sender.addr,
     to: recoveredAccount.addr
   })
+  console.log("line413")
+
   atcOpt.addTransaction({ txn: claimLicenseMe, signer })
+  console.log("line416")
 
   const claimLicenseUCLA = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
     suggestedParams,
@@ -415,8 +422,10 @@ buttons['agree'].onclick = async () => {
     to: 'RPNXNY5BYC67TI7AZGUUKAS77TFOP5WMLHP3GZKLDS2QSKIVVPZGO7RRBY'
   })
   atcOpt.addTransaction({ txn: claimLicenseUCLA, signer })
+  console.log("line425")
 
   await atcOpt.execute(algodClient, 3)
+  console.log("line428")
 
   const xferTxn = algosdk.makeAssetTransferTxnWithSuggestedParamsFromObject({
     from: assetAccount.addr,
@@ -426,17 +435,20 @@ buttons['agree'].onclick = async () => {
     amount: 1,
   });
 
+  console.log("line438")
 
   const signedXferTxn = xferTxn.signTxn(assetAccount.sk);
   await algodClient.sendRawTransaction(signedXferTxn).do();
   await algosdk.waitForConfirmation(algodClient, xferTxn.txID().toString(), 3);
   console.log(assetIndex);
+  console.log("line444")
 
   var assetinfo = document.getElementById('assetinfo') as HTMLInputElement;
   assetinfo.classList.remove('hidden');
-   assetinfo.innerHTML= 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise.'
+   assetinfo.innerHTML= 'Your asset ID is: ' + assetIndex + '. Make sure to store this number safely and do not share it with anyone. This is your key place records of your merchandise. Continue to the order page to continue your purchase'
   const storage = getStorage();
   const pdfRef = storageRef(storage, 'accounts/${sender.addr}/${assetIndex}/generated.pdf');
+  console.log("line451")
 
   // Upload the PDF to the defined reference
   uploadBytes(pdfRef, blob).then((snapshot) => {
@@ -458,70 +470,3 @@ buttons['checkAsset'].onclick = async () => {
 
 }
 
-buttons['submit'].onclick = async () => {
-
-  const sender = {
-    addr: accountsMenu.selectedOptions[0].value,
-    signer
-  }
-  const suggestedParams = await algodClient.getTransactionParams().do()
-
-  const numShirtPriceOrg = shirtsInput.valueAsNumber * 1000
-  const numShortPriceOrg = shortsInput.valueAsNumber * 2000
-  const numSweatshirtPriceOrg = sweatshirtsInput.valueAsNumber * 3000
-  const numShirtPriceMe = shirtsInput.valueAsNumber * 100
-  const numShortPriceMe = shortsInput.valueAsNumber * 200
-  const numSweatshirtPriceMe = sweatshirtsInput.valueAsNumber * 300
-
-  const atc = new algosdk.AtomicTransactionComposer()
-
-  const paymentShirtOrg = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numShirtPriceOrg,
-    from: sender.addr,
-    to: 'RPNXNY5BYC67TI7AZGUUKAS77TFOP5WMLHP3GZKLDS2QSKIVVPZGO7RRBY'
-  })
-  atc.addTransaction({ txn: paymentShirtOrg, signer })
-
-  const paymentShirtMe = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numShirtPriceMe,
-    from: sender.addr,
-    to: recoveredAccount.addr
-  })
-  atc.addTransaction({ txn: paymentShirtMe, signer })
-
-  const paymentShortOrg = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numShortPriceOrg,
-    from: sender.addr,
-    to: 'RPNXNY5BYC67TI7AZGUUKAS77TFOP5WMLHP3GZKLDS2QSKIVVPZGO7RRBY'
-  })
-  atc.addTransaction({ txn: paymentShortOrg, signer })
-
-  const paymentShortMe = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numShortPriceMe,
-    from: sender.addr,
-    to: recoveredAccount.addr
-  })
-  atc.addTransaction({ txn: paymentShortMe, signer })
-
-  const paymentSweatshirtOrg = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numSweatshirtPriceOrg,
-    from: sender.addr,
-    to: 'RPNXNY5BYC67TI7AZGUUKAS77TFOP5WMLHP3GZKLDS2QSKIVVPZGO7RRBY'
-  })
-  atc.addTransaction({ txn: paymentSweatshirtOrg, signer })
-
-  const paymentSweatshirtMe = algosdk.makePaymentTxnWithSuggestedParamsFromObject({
-    suggestedParams,
-    amount: numSweatshirtPriceMe,
-    from: sender.addr,
-    to: recoveredAccount.addr
-  })
-  atc.addTransaction({ txn: paymentSweatshirtMe, signer })
-
-  await atc.execute(algodClient, 3)
-}
