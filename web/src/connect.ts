@@ -105,7 +105,7 @@ function hashPdf(file: Blob): Promise<Uint8Array> {
 
 function storeAccount(account: string, assetIndex: number) {
   const db = getDatabase();
-  console.log(`${db}`)
+  console.log(`fffffffffffffffffff${db}`)
   const accountRef = dbRef(db, 'accounts/' + account);
 
   // Retrieve existing asset indexes
@@ -125,6 +125,7 @@ function storeAccount(account: string, assetIndex: number) {
 
 function checkAccount(inputAccount: string, inputAssetIndex: number) {
   const db = getDatabase();
+  console.log("testingcheckaccount");
   const accountRef = dbRef(db, 'accounts/' + inputAccount);
 
   // Get the account data from the database
@@ -456,6 +457,7 @@ buttons['agree'].onclick = async () => {
   });
 
   storeAccount(sender.addr, assetIndex);
+ // checkAccount(sender.addr,assetIndex);
   //insertRecord(assetIndex, sender.addr);
 }
 

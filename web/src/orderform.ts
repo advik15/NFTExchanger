@@ -2,14 +2,19 @@ import algosdk, { AtomicTransactionComposer } from 'algosdk'
 import { PeraSession } from './wallets/pera'
 import { getDatabase, ref as dbRef, set,get } from 'firebase/database';
 
+import { initializeApp } from 'firebase/app';
 
 const pera = new PeraSession()
 const accountsMenu = document.getElementById('accountsUse') as HTMLSelectElement
 const algodClient = new algosdk.Algodv2('', 'https://testnet-api.algonode.cloud', '')
 var submit = document.getElementById('submit') as HTMLInputElement;
 var connect = document.getElementById('connect') as HTMLInputElement;
-var assetid = document.getElementById('assetId') as HTMLInputElement;
+var assetid = document.getElementById('assetId') as HTMLTextAreaElement;
 var checkasset = document.getElementById('checkAsset') as HTMLInputElement;
+const shirt_label = document.getElementById('shirt_label') as HTMLInputElement;
+const short_label = document.getElementById('short') as HTMLInputElement;
+const sweatshirts_label = document.getElementById('sweatshirts_label') as HTMLInputElement;
+
 const shirtsInput = document.getElementById('shirts') as HTMLInputElement
 const shortsInput = document.getElementById('shorts') as HTMLInputElement
 const sweatshirtsInput = document.getElementById('sweatshirts') as HTMLInputElement
@@ -18,12 +23,24 @@ const recoveredAccount = algosdk.mnemonicToSecretKey(account_mnemonic);
 async function signer(txns: algosdk.Transaction[]) {
   return await pera.signTxns(txns)
 }
+const firebaseConfig = {
+  apiKey: "AIzaSyDMEGBFsul2qxumXo0G4R1XdQjtX4dMrf8",
+  authDomain: "copyrightprototype.firebaseapp.com",
+  projectId: "copyrightprototype",
+  storageBucket: "copyrightprototype.appspot.com",
+  messagingSenderId: "517747606301",
+  appId: "1:517747606301:web:d20424b36a961972f817f4",
+  measurementId: "G-S9N43X8PM9"
+};
+
+const app = initializeApp(firebaseConfig);
+
 function checkAccount(inputAccount: string, inputAssetIndex: number) {
   const db = getDatabase();
-  console.log(`${db}`)
 
   const accountRef = dbRef(db, 'accounts/' + inputAccount);
-  console.log("test")
+  console.log(inputAccount)
+  console.log(inputAssetIndex)
   // Get the account data from the database
   get(accountRef).then(snapshot => {
     const assetIndexes = snapshot.val()?.assetIndexes || [];
@@ -35,6 +52,10 @@ function checkAccount(inputAccount: string, inputAssetIndex: number) {
       shirtsInput.classList.remove("hidden");
       shortsInput.classList.remove("hidden");
       sweatshirtsInput.classList.remove("hidden");
+      shirt_label.classList.remove("hidden");
+      short_label.classList.remove("hidden");
+      sweatshirts_label.classList.remove("hidden");
+
     } else {
       console.log('No match found.');
     }
@@ -62,9 +83,8 @@ checkasset.onclick = async () => {
   }
   console.log("hi" )
 
-  const assetID = assetid.valueAsNumber
-  console.log("hiffff" )
-
+  const assetID = parseInt(assetid.value);
+  console.log(`this is the assetID ${assetID}` )
   checkAccount(sender.addr, assetID);
 
 }
